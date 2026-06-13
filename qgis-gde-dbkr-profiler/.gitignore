@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.env.local
+.env.production
+.pytest_cache/
+
+# Reports
+reports/
+
+# VSCode
+.vscode/

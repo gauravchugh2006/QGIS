@@ -1,0 +1,25 @@
+# Approved tools list used for licensing, security review, and project justification.
+approved_tools:
+  - name: Python cProfile
+    license: Python Standard Library
+    cost: Free
+    purpose: CPU profiling
+    security_status: Safe
+
+  - name: psutil
+    license: BSD-3-Clause
+    cost: Free
+    purpose: Memory and process monitoring
+    security_status: To be validated by company security
+
+  - name: memory-profiler
+    license: BSD
+    cost: Free
+    purpose: Memory usage tracking
+    security_status: To be validated by company security
+
+  - name: PostgreSQL EXPLAIN ANALYZE
+    license: PostgreSQL License
+    cost: Free
+    purpose: SQL query performance analysis
+    security_status: Safe if used internally

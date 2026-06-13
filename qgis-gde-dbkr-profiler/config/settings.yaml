@@ -1,0 +1,21 @@
+# Main runtime settings for the toolkit: output location, profiler options, and DB access.
+project:
+  name: QGIS GDE DBKR Profiling Toolkit
+  environment: Windows 11
+  output_dir: reports
+
+profiling:
+  top_n_functions: 30
+  enable_cpu_profile: true
+  enable_elapsed_time: true
+  enable_memory_check: true
+  enable_database_profile: true
+  memory_leak_iterations: 3
+
+database:
+  host: localhost
+  port: 5432
+  database: dbkr
+  user: postgres
+  password: postgres
+  test_query: SELECT 1

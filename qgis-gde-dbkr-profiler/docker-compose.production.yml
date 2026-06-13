@@ -1,0 +1,14 @@
+# Production-oriented stack that runs the app against an external PostgreSQL service.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qgis-profiler-app-prod
+    env_file:
+      - .env.production
+    environment:
+      APP_ENV: production
+    volumes:
+      - ./reports:/app/reports
+    command: ["python", "src/main.py"]

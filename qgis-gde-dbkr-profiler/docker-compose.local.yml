@@ -1,0 +1,42 @@
+# Local development stack with the app plus PostgreSQL for end-to-end testing.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qgis-profiler-app-local
+    env_file:
+      - .env.local
+    environment:
+      APP_ENV: local
+      DB_HOST: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./reports:/app/reports
+    command: ["python", "src/main.py"]
+
+  postgres:
+    image: postgres:16
+    container_name: qgis-profiler-postgres-local
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    environment:
+      POSTGRES_DB: ${DB_NAME:-dbkr}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-dbkr}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

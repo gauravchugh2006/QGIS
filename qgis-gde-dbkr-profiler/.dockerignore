@@ -1,0 +1,11 @@
+# Keeps local virtual envs, generated reports, and caches out of Docker build context.
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+reports/
+.git/
+.gitignore
+.env
+.env.local
+.env.production

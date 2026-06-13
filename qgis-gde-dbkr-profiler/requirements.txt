@@ -1,0 +1,7 @@
+psutil
+memory-profiler
+line-profiler
+pyyaml
+psycopg2-binary
+pytest
+tabulate

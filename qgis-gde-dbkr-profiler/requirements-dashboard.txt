@@ -1,0 +1,2 @@
+# Optional GUI runtime for the standalone QGIS profiling dashboard demo.
+PyQt5
